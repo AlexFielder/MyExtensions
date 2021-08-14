@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExtensionsContracts", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLog4NetFileHelper", "..\MyLog4NetFileHelper\MyLog4NetFileHelper.csproj", "{71835829-1351-47EF-B09C-36475BD1BF44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRYHelpers", "..\DRYHelpers\DRYHelpers.csproj", "{DD49592C-F3A0-4253-BBF9-8D9B6C9EE315}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DumpiLogicRules", "..\DumpiLogicRules\DumpiLogicRules.csproj", "{998E5110-35AB-4E89-BCE4-3A601FF98E0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{71835829-1351-47EF-B09C-36475BD1BF44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71835829-1351-47EF-B09C-36475BD1BF44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71835829-1351-47EF-B09C-36475BD1BF44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD49592C-F3A0-4253-BBF9-8D9B6C9EE315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD49592C-F3A0-4253-BBF9-8D9B6C9EE315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD49592C-F3A0-4253-BBF9-8D9B6C9EE315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD49592C-F3A0-4253-BBF9-8D9B6C9EE315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{998E5110-35AB-4E89-BCE4-3A601FF98E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{998E5110-35AB-4E89-BCE4-3A601FF98E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{998E5110-35AB-4E89-BCE4-3A601FF98E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{998E5110-35AB-4E89-BCE4-3A601FF98E0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
