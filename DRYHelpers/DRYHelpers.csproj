@@ -64,7 +64,6 @@
     <Compile Include="CloudStorageHelpers.cs" />
     <Compile Include="ConfigSettings.cs" />
     <Compile Include="DrawingHelpers.cs" />
-    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="GuideCircumferenceExceededException.cs" />
     <Compile Include="iLogicRules.cs">
       <DependentUpon>iLogicRules.xsd</DependentUpon>
