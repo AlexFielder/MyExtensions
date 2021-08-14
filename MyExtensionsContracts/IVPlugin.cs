@@ -13,6 +13,7 @@ namespace MyExtensionsContracts
         string CommandName { get; }
         string Description { get; }
         string DefaultResourceName { get; }
+        EnvironmentRibbonName EnvironmentRibbonName { get; }
         Application InventorApp { get; set; }
 
         void Execute();
@@ -22,6 +23,6 @@ namespace MyExtensionsContracts
         string ToolTip { get; }
         string PluginSettingsPrefix { get; }
         string PluginSettingsPrefixVar { get; set; }
-        string ParentSettingsFilePath { get; }
+        string ParentSettingsFilePath { get; set; }
     }
 }

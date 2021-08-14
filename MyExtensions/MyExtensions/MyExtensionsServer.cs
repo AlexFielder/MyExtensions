@@ -1,20 +1,14 @@
 using Inventor;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using MyExtensionsContracts;
-using log4net.Config;
 using log4net;
-using System.Collections;
 using System.Linq;
-using System.Windows.Interop;
 using System.Configuration;
 using System.Reflection;
 using System.Xml;
-using System.Collections.Specialized;
 
 namespace MyExtensions
 {
@@ -567,6 +561,60 @@ namespace MyExtensions
             }
             HandlingCode = HandlingCodeEnum.kEventNotHandled;
             //HandlingCode = UpdateiProperties(BeforeOrAfter);
+        }
+
+        /// <summary>
+        /// Used to add context extensions to the relevant menu.
+        /// </summary>
+        /// <param name="SelectedEntities"></param>
+        /// <param name="SelectionDevice"></param>
+        /// <param name="LinearMenu"></param>
+        /// <param name="AdditionalInfo"></param>
+        private void M_UserInputEvents_OnLinearMarkingMenu(ObjectsEnumerator SelectedEntities, SelectionDeviceEnum SelectionDevice, CommandControls LinearMenu, NameValueMap AdditionalInfo)
+        {
+            MyIVPluginLoader<IVContextPlugin> loader = new MyIVPluginLoader<IVContextPlugin>(pluginsPath);
+            _ContextPlugins = new Dictionary<string, IVContextPlugin>();
+            IEnumerable<IVContextPlugin> plugins = loader.Plugins;
+            if (plugins != null)
+            {
+                //IEnumerable<IVContextPlugin> plugins = (IEnumerable<IVContextPlugin>)loader.Plugins;
+                //IEnumerable<IVContextPlugin> plugins = loader.Plugins.Select(m => m.Value).ToList();
+                string targetControlName = string.Empty;
+
+                foreach (IVContextPlugin item in plugins)
+                {
+                    item.LogFileHelper = logHelper;
+                    item.InventorApp = MyExtensionAddinGlobal.InventorApp;
+                    _ContextPlugins.Add(item.CommandName, item);
+                    targetControlName = item.TargetControlName;
+
+                    foreach (CommandControl ctrl in LinearMenu)
+                    {
+                        if (ctrl.InternalName == item.CommandInternalName)
+                        {
+                            ctrl.Delete(); //prevents duplicates!
+                        }
+                        if (ctrl.InternalName == targetControlName)
+                        {
+                            //create a new buttondefinition
+                            Icon icon1 = GetICOResource(item.DefaultResourceName, System.Reflection.Assembly.LoadFrom(item.Path));
+                            InventorButton button1 = new InventorButton(
+                                    item.CommandDisplayName, "MyExtensionsServer.Button_" + Guid.NewGuid().ToString(),
+                                    item.Description, item.ToolTip, CommandTypesEnum.kShapeEditCmdType, ButtonDisplayEnum.kDisplayTextInLearningMode);
+                            //this exact line works above but not here...:
+                            button1.Execute = item.Execute;
+                            LinearMenu.AddButton(button1.ButtonDef, item.DisplayBigIcon, item.DisplayText, item.TargetControlName, item.InsertBeforeTarget);
+                            LinearMenu.AddSeparator(ctrl.InternalName, true);
+                            //add it here so we can make sure we clean up afterwards!
+                            MyExtensionAddinGlobal.ButtonList.Add(button1);
+                            log.Info("Added button: " + item.CommandName + " to context menu.");
+                        }
+
+                    }
+
+                }
+            }
+
         }
 
         private void updatestatusbar(string Message)

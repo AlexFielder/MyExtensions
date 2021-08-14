@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="InvAddIn.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SettingsButtonInternalName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">GraitecExtensionsServer.Settings_</Value>
+    </Setting>
+    <Setting Name="AppSettingsChangesSavedMsg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Application Configuration changes have been saved.</Value>
+    </Setting>
+    <Setting Name="AppSettingsConfigurationCaption" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Application Configuration</Value>
+    </Setting>
+    <Setting Name="AppSettingsDefaultsRestoredMsg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Application Configuration has been restored to default.</Value>
+    </Setting>
+    <Setting Name="AppSettingsFailedToLoadMsg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Failed to load the configuration file. Reason(</Value>
+    </Setting>
+    <Setting Name="AppSettingsFailedToSaveMsg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Failed to btnSave configuration. Reason(</Value>
+    </Setting>
+    <Setting Name="AppSettingsRestoreDefaultsMsg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Restore Application Configuration to default?</Value>
+    </Setting>
+    <Setting Name="AppSettingsSaveChangesMsg" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Save Application Configuration changes before closing?</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
