@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DumpiLogicRules</RootNamespace>
     <AssemblyName>DumpiLogicRules</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,17 +34,20 @@
   <ItemGroup>
     <Reference Include="Autodesk.iLogic.Automation">
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Inventor 2022\Bin\Autodesk.iLogic.Automation.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Autodesk.iLogic.Common">
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Inventor 2022\Bin\Autodesk.iLogic.Common.dll</HintPath>
     </Reference>
     <Reference Include="Autodesk.iLogic.Interfaces">
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Inventor 2022\Bin\Autodesk.iLogic.Interfaces.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Autodesk.Inventor.Interop, Version=26.1.0.0, Culture=neutral, PublicKeyToken=d84147f8b4276564, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Inventor 2022\Bin\Public Assemblies\Autodesk.Inventor.Interop.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\MyExtensions\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
@@ -63,13 +67,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\MyExtensions\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -85,6 +89,7 @@
     <Compile Include="DirtyCollection.cs" />
     <Compile Include="DumpiLogicRulesButtonActions.cs" />
     <Compile Include="DumpiLogicRulesExtension.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="iLogicRules.cs">
       <DependentUpon>iLogicRules.xsd</DependentUpon>
     </Compile>
@@ -143,4 +148,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>XCopy "$(TargetDir)*.*" "%25AppData%25\Autodesk\ApplicationPlugins\AllEyes Add-ins\Plugins\*.*" /Y /R</PostBuildEvent>
+  </PropertyGroup>
 </Project>
