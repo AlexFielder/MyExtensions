@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyExtensions
 {
-    class MyExtensionAddinGlobal
+    public class MyExtensionAddinGlobal
     {
         public static Application InventorApp;
 
