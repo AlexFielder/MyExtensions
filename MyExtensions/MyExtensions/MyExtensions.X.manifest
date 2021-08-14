@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
+
+  <assemblyIdentity name="MyExtensions" version="1.0.0.0"></assemblyIdentity>
+
+  <clrClass clsid="{fd207621-7782-482d-b938-8c3c2442bb98}" progid="MyExtensions.StandardAddInServer" threadingModel="Both" name="MyExtensions.StandardAddInServer" runtimeVersion=""></clrClass>
+
+  <file name="MyExtensions.dll" hashalg="SHA1"></file>
+
+</assembly>
