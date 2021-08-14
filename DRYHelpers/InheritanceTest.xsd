@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<schema id="inheritance"
+    targetNamespace="http://test.com"
+    elementFormDefault="qualified"
+    xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:test="http://test.com"
+>
+    <element name="Time">
+    	<complexType>
+    		<sequence>
+    			<element name="First" type="test:A" />
+    			<element name="Second" type="test:B" />
+    		</sequence>
+    	</complexType>
+    </element>
+
+    <complexType name="shortOptions">
+    	<sequence>
+    		<element name="Day" />
+    	</sequence>
+    </complexType>
+
+    <complexType name="longOptions">
+    	<complexContent>
+    		<extension base="test:shortOptions">
+    			<sequence>
+    				<element name="Week" />
+    			</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="A">
+    	<sequence>
+    		<element name="options" type="test:shortOptions" />
+    	</sequence>
+    </complexType>
+
+    <complexType name="B">
+    	<sequence>
+    		<element name="options" type="test:longOptions" />
+    	</sequence>
+    </complexType>
+
+</schema>

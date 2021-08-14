@@ -1,0 +1,53 @@
+<xs:schema id="iPropertyEnums" attributeFormDefault="unqualified"
+           targetNamespace="http://tempuri.org/iPropertyEnums.xsd"
+           elementFormDefault="qualified"
+           xmlns="http://tempuri.org/iPropertyEnums.xsd"
+           xmlns:mstns="http://tempuri.org/iPropertyEnums.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="iPropertyEnums" type="iPropertyEnumsType"/>
+  <xs:complexType name="iPropertyEnumType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="Name" use="optional"/>
+        <xs:attribute type="xs:byte" name="IsKey" use="optional"/>
+        <xs:attribute type="xs:string" name="FriendlyName" use="optional"/>
+        <xs:attribute type="xs:byte" name="Value" use="optional"/>
+        <xs:attribute type="xs:string" name="Description" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="iPropertyEnumsType">
+    <xs:sequence>
+      <xs:element type="iPropertyEnumType" name="iPropertyEnum" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <!--<xs:complexType name="DocSummaryInformationEnumType">
+    <xs:sequence>
+      <xs:element type="iPropertyEnumType" name="iPropertyEnum" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ContentLibraryEnumType">
+    <xs:sequence>
+      <xs:element type="iPropertyEnumType" name="iPropertyEnum" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="SummaryInformationEnumType">
+    <xs:sequence>
+      <xs:element type="iPropertyEnumType" name="iPropertyEnum" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UserDefinedPropertiesEnumType">
+    <xs:sequence>
+      <xs:element type="iPropertyEnumType" name="iPropertyEnum"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="iPropertyEnumsType">
+    <xs:sequence>
+      <xs:element type="DesignTrackingPropertiesEnumType" name="DesignTrackingPropertiesEnum"/>
+      <xs:element type="DocSummaryInformationEnumType" name="DocSummaryInformationEnum"/>
+      <xs:element type="ContentLibraryEnumType" name="ContentLibraryEnum"/>
+      <xs:element type="SummaryInformationEnumType" name="SummaryInformationEnum"/>
+      <xs:element type="UserDefinedPropertiesEnumType" name="UserDefinedPropertiesEnum"/>
+    </xs:sequence>
+  </xs:complexType>-->
+</xs:schema>

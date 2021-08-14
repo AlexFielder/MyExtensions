@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Parameters"
+    targetNamespace="http://tempuri.org/Parameters.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/Parameters.xsd"
+    xmlns:mstns="http://tempuri.org/Parameters.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="ParamWithValueList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:int" name="version"/>
+        <xs:element name="parameterTypes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ParamType" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="typeName"/>
+                    <xs:element type="xs:byte" name="typeCode"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="parameters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ParamWithValue" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="typeCode"/>
+                    <xs:element type="xs:string" name="value"/>
+                    <xs:element type="xs:string" name="comment"/>
+                    <xs:element type="xs:string" name="isKey"/>
+                    <xs:element name="multiValues" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element type="xs:string" name="string" maxOccurs="unbounded" minOccurs="0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="InventorAssembly"
+            targetNamespace="http://tempuri.org/InventorAssembly.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/InventorAssembly.xsd"
+    xmlns:mstns="http://tempuri.org/InventorAssembly.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root" type="InventorDocumentType" />
+    
+  <xs:complexType name="ReferencedDocumentsList">
+    <xs:sequence>
+        <xs:element name="document" type="InventorDocumentType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="InventorDocumentType">
+    <xs:sequence>
+      <!-- added the following to see if we can nest the resultant XML under the properties and components headings. -->
+      <xs:element name="Properties" >
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="property" 
+                        type="InventorPropertyType" 
+                        minOccurs="0" 
+                        maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>  
+      </xs:element>
+      <xs:element name="Parameters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Parameter"
+                         type="InventorParameterType"
+                         minOccurs="0"
+                         maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ReferencedDocuments" type="ReferencedDocumentsList" />
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="ID" use="required" />
+    <xs:attribute type="xs:string" name="DocumentType" use="required" />
+    <xs:attribute type="xs:string" name="Filename" use="required" />
+    <xs:attribute type="xs:string" name="ReferencingDocument" use="optional" />
+    <xs:attribute type="xs:string" name="ParameterCount" use="optional" />
+    <xs:attribute type="xs:string" name="FeatureCount" use="optional" />
+    <xs:attribute type="xs:string" name="ConstraintCount" use="optional" />
+    <xs:attribute type="xs:string" name="OccurrenceCount" use="optional" />
+    <xs:attribute type="xs:string" name="SketchblocksCount" use="optional" />
+  </xs:complexType>
+  
+  <xs:complexType name="InventorPropertyType">
+    <xs:attribute type="xs:string" name="ParentDocumentID" />
+    <xs:attribute type="xs:string" name="Name" />
+    <xs:attribute type="xs:string" name="Value" />
+    <xs:attribute type="xs:string" name="Type" />
+    <xs:attribute type="xs:integer" name="PropertyID" />
+  </xs:complexType>
+
+  <xs:complexType name="InventorParameterType">
+    <xs:sequence>
+      <xs:element name="Variants">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="parameterVariant"
+                        type="InventorParameterVariant"
+                        minOccurs="0"
+                        maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:integer" name="ParentDocumentID">
+      <xs:annotation>
+        <xs:documentation>A randomly generated GUID from the parent Inventor document.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" name="Name">
+      <xs:annotation>
+        <xs:documentation>Property that allows you to get the name of the parameter. The name is unique with respect to all other parameters in this document.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" name="Value">
+      <xs:annotation>
+        <xs:documentation>Property that allows you to get the value of the parameter. This value is always represented in database units.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" name="ParameterType">
+      <xs:annotation>
+        <xs:documentation>Property that allows you to get the type of the parameter. The parameter type can be either kModelParameterType, kReferenceParameterType, kTableParameterType, or kUserParameterType.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" name="Comment">
+      <xs:annotation>
+        <xs:documentation>Property that allows you to get the comment string associated with the parameter.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" name="CustomPropertyFormat">
+      <xs:annotation>
+        <xs:documentation>Property that returns the CustomPropertyFormat object associated with this parameter. The CustomPropertyFormat provides control over how the parameter value is formatted when it is exposed as a custom iProperty.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" name="DisplayFormat">
+      <xs:annotation>
+        <xs:documentation>Property that gets and sets the display format for the parameter. Valid values are kDecimalDisplayFormat, kFractionalDisplayFormat and kArchitecturalDisplayFormat.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:boolean" name="ExposedAsProperty" default="false">
+      <xs:annotation>
+        <xs:documentation>Property that allows you to get and set the Boolean indicating if this parameter is exposed as an iProperty of this document.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:boolean" name="InUse" default="false">
+      <xs:annotation>
+        <xs:documentation>Property that returns whether whether this parameter is currently in use (by a dimension, feature or by any other parameter).</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:boolean" name="IsKey" default="false">
+      <xs:annotation>
+        <xs:documentation>Property that gets whether this parameter is a key parameter or not. Key parameters are typically those that need to be easily accessed and are designated as key to be filtered out from the rest of the parameters.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:double" name="ModelValue" >
+      <xs:annotation>
+        <xs:documentation>Property that returns the evaluation of this parameter (in database units) that is currently used by the model. This takes into account the value computed from the expression and the tolerance. This method is only valid for numeric unit types and will fail for Text and Boolean unit types.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" name="Tolerance" >
+      <xs:annotation>
+        <xs:documentation>Property that returns the tolerance for this parameter. This property returns Nothing in the case where the unit type of this parameter is kTextUnits or kBooleanUnits.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute type="xs:string" name="Units" >
+      <xs:annotation>
+        <xs:documentation>Property that allows you to get the units of the parameter. The units will always be returned as a string.</xs:documentation> 
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType name="InventorParameterVariant">
+    <xs:attribute type="xs:string" name="Value" use="required"/>
+    <xs:attribute type="xs:string" name="FactoryRow" />
+    <xs:attribute type="xs:string" name="FactoryMemberName" />
+    <xs:attribute type="xs:string" name="FactoryPartNumber" />
+                  
+  </xs:complexType>  
+ </xs:schema>
