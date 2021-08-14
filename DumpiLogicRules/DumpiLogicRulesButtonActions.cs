@@ -1,4 +1,4 @@
-﻿using DumpiLogicRulesExtension;
+﻿using DumpiLogicRules;
 using Inventor;
 using System;
 using log4net;
@@ -7,9 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Autodesk.iLogic.Interfaces;
-using MyExtensions;
 using System.Windows.Forms;
-using Autodesk.iLogic.Interfaces;
 using System.Windows.Interop;
 
 namespace DumpiLogicRules
@@ -27,7 +25,7 @@ namespace DumpiLogicRules
 		public static void Button1_Execute()
 		{
 			//tests our connection to our logger.
-			//DumpiLogicRulesExtension.log.Debug("Button Extension button was clicked!");
+			//DumpiLogicRules.log.Debug("Button Extension button was clicked!");
 			//shows the user a messagebox
 			//MessageBox.Show("Hello from the first button extension!");
 			//tests our connection to the Inventor application itself.
@@ -57,13 +55,13 @@ namespace DumpiLogicRules
 			//MessageBox.Show("Hello World!") '<-debugging!
 
 			UseListOfRules = false;
-			if (DumpiLogicRulesExtension.m_InventorApp.ActiveDocument is AssemblyDocument)
+			if (DumpiLogicRules.m_InventorApp.ActiveDocument is AssemblyDocument)
 			{
-				AssemblyDocument oDoc = (AssemblyDocument)DumpiLogicRulesExtension.m_InventorApp.ActiveDocument;
+				AssemblyDocument oDoc = (AssemblyDocument)DumpiLogicRules.m_InventorApp.ActiveDocument;
 				if (!(oDoc.FullFileName == string.Empty))
 				{
 					ruleslistFileName = System.IO.Path.GetDirectoryName(oDoc.FullFileName) + "\\" + System.IO.Path.GetFileNameWithoutExtension(oDoc.FullFileName) + "-iLogicRules.xml";
-					BeginCollectiLogicRules(DumpiLogicRulesExtension.m_InventorApp.ActiveDocument);
+					BeginCollectiLogicRules(DumpiLogicRules.m_InventorApp.ActiveDocument);
 				}
 				else
 				{
@@ -71,13 +69,13 @@ namespace DumpiLogicRules
 					return;
 				}
 			}
-			else if (DumpiLogicRulesExtension.m_InventorApp.ActiveDocument is PartDocument)
+			else if (DumpiLogicRules.m_InventorApp.ActiveDocument is PartDocument)
 			{
-				PartDocument oDoc = (PartDocument)DumpiLogicRulesExtension.m_InventorApp.ActiveDocument;
+				PartDocument oDoc = (PartDocument)DumpiLogicRules.m_InventorApp.ActiveDocument;
 				if (!(oDoc.FullFileName == string.Empty))
 				{
 					ruleslistFileName = System.IO.Path.GetDirectoryName(oDoc.FullFileName) + "\\" + System.IO.Path.GetFileNameWithoutExtension(oDoc.FullFileName) + "-iLogicRules.xml";
-					PartDocument thisPart = (PartDocument)DumpiLogicRulesExtension.m_InventorApp.ActiveDocument;
+					PartDocument thisPart = (PartDocument)DumpiLogicRules.m_InventorApp.ActiveDocument;
 					BeginCollectiLogicRules(thisPart);
 				}
 				else
@@ -86,13 +84,13 @@ namespace DumpiLogicRules
 					return;
 				}
 			}
-			else if (DumpiLogicRulesExtension.m_InventorApp.ActiveDocument is DrawingDocument)
+			else if (DumpiLogicRules.m_InventorApp.ActiveDocument is DrawingDocument)
 			{
-				DrawingDocument oDoc = (DrawingDocument)DumpiLogicRulesExtension.m_InventorApp.ActiveDocument;
+				DrawingDocument oDoc = (DrawingDocument)DumpiLogicRules.m_InventorApp.ActiveDocument;
 				if (!(oDoc.FullFileName == string.Empty))
 				{
 					ruleslistFileName = System.IO.Path.GetDirectoryName(oDoc.FullFileName) + "\\" + System.IO.Path.GetFileNameWithoutExtension(oDoc.FullFileName) + "-iLogicRules.xml";
-					DrawingDocument thisDrawing = (DrawingDocument)DumpiLogicRulesExtension.m_InventorApp.ActiveDocument;
+					DrawingDocument thisDrawing = (DrawingDocument)DumpiLogicRules.m_InventorApp.ActiveDocument;
 					BeginCollectiLogicRules(thisDrawing);
 				}
 				else
@@ -102,7 +100,7 @@ namespace DumpiLogicRules
 				}
 
 			}
-			else if (DumpiLogicRulesExtension.m_InventorApp.ActiveDocument is PresentationDocument)
+			else if (DumpiLogicRules.m_InventorApp.ActiveDocument is PresentationDocument)
 			{
 				throw new Exception("NOT YET IMPLEMENTED!");
 			}
@@ -135,7 +133,7 @@ namespace DumpiLogicRules
 		public static void BeginCollectiLogicRules(Document oDoc)
 		{
 			//refactor here
-			IiLogicAutomation iLogicAuto = ProcessFiles.GetiLogicAutomation(DumpiLogicRulesExtension.m_InventorApp);
+			IiLogicAutomation iLogicAuto = ProcessFiles.GetiLogicAutomation(DumpiLogicRules.m_InventorApp);
 			rulesListObject = new iLogicRuleType();
 			BuildRuleColl(oDoc, iLogicAuto);
 			// Loop through all referenced docs in assembly
@@ -168,7 +166,7 @@ namespace DumpiLogicRules
 		/// <param name="oPartDoc"></param>
 		public static void BeginCollectiLogicRules(PartDocument oPartDoc)
 		{
-			IiLogicAutomation iLogicAuto = ProcessFiles.GetiLogicAutomation(DumpiLogicRulesExtension.m_InventorApp);
+			IiLogicAutomation iLogicAuto = ProcessFiles.GetiLogicAutomation(DumpiLogicRules.m_InventorApp);
 			rulesListObject = new iLogicRuleType();
 			BuildRuleColl((Document)oPartDoc, iLogicAuto);
 			ProcessFiles.UpdateStatusBar("Beginning iLogic Rules Dump");
@@ -180,7 +178,7 @@ namespace DumpiLogicRules
 		/// <param name="thisDrawing"></param>
 		public static void BeginCollectiLogicRules(DrawingDocument thisDrawing)
 		{
-			IiLogicAutomation iLogicAuto = ProcessFiles.GetiLogicAutomation(DumpiLogicRulesExtension.m_InventorApp);
+			IiLogicAutomation iLogicAuto = ProcessFiles.GetiLogicAutomation(DumpiLogicRules.m_InventorApp);
 			rulesListObject = new iLogicRuleType();
 			BuildRuleColl((Document)thisDrawing, iLogicAuto);
 			ProcessFiles.UpdateStatusBar("Beginning iLogic Rules Dump");
@@ -257,14 +255,14 @@ namespace DumpiLogicRules
 		{
 			try
 			{
-				Document oDoc = DumpiLogicRulesExtension.m_InventorApp.ActiveDocument;
+				Document oDoc = DumpiLogicRules.m_InventorApp.ActiveDocument;
 				UseListOfRules = true;
 				listofiLogicRules = new DirtyCollection<RuleType>();
 				//listofiLogicRules = New List(Of RuleType)
 				BeginCollectiLogicRules(oDoc);
 				ModifyRulesWindow modifyRulesForm = new ModifyRulesWindow();
 				WindowInteropHelper helper = new WindowInteropHelper(modifyRulesForm);
-				helper.Owner = new IntPtr(DumpiLogicRulesExtension.m_InventorApp.MainFrameHWND);
+				helper.Owner = new IntPtr(DumpiLogicRules.m_InventorApp.MainFrameHWND);
 				modifyRulesForm.ShowDialog();
 				//update any modified rules.
 				if (modifyRulesForm.listofModifiedRules.Count > 0)
@@ -284,7 +282,7 @@ namespace DumpiLogicRules
 		/// <param name="listofrulestoUpdate"></param>
 		public static void UpdateModifiedRules(List<RuleType> listofrulestoUpdate)
 		{
-			IiLogicAutomation iLogicAuto = ProcessFiles.GetiLogicAutomation(DumpiLogicRulesExtension.m_InventorApp);
+			IiLogicAutomation iLogicAuto = ProcessFiles.GetiLogicAutomation(DumpiLogicRules.m_InventorApp);
 			//MessageBox.Show("Count of modified rules is: " & listofrulestoUpdate.Count.ToString())
 			//need to sort the list
 			listofrulestoUpdate.OrderBy(x => x.ParentFileName);
@@ -293,13 +291,13 @@ namespace DumpiLogicRules
 			foreach (string filetoedit in listoffilestoedit)
 			{
 				Document oDoc = null;
-				if (filetoedit == DumpiLogicRulesExtension.m_InventorApp.ActiveDocument.FullFileName)
+				if (filetoedit == DumpiLogicRules.m_InventorApp.ActiveDocument.FullFileName)
 				{
-					oDoc = DumpiLogicRulesExtension.m_InventorApp.ActiveDocument;
+					oDoc = DumpiLogicRules.m_InventorApp.ActiveDocument;
 				}
 				else
 				{
-					oDoc = DumpiLogicRulesExtension.m_InventorApp.Documents.Open(filetoedit);
+					oDoc = DumpiLogicRules.m_InventorApp.Documents.Open(filetoedit);
 				}
 
 				IEnumerable rules = iLogicAuto.get_Rules(oDoc);
@@ -323,7 +321,7 @@ namespace DumpiLogicRules
 			}
 			//Dim grouped = listofrulestoUpdate.GroupBy(Function(x) x.ParentFileName)
 			//For Each filenameToEdit As Object In grouped
-			//    DumpiLogicRulesExtension.m_InventorApp.Documents.Open(filenameToEdit.ToString())
+			//    DumpiLogicRules.m_InventorApp.Documents.Open(filenameToEdit.ToString())
 			//    For Each ruletomodify As RuleType In filenameToEdit
 
 			//    Next

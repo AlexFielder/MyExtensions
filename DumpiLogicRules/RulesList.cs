@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DumpiLogicRulesExtension
+namespace DumpiLogicRules
 {
     public partial class RulesList : Form
     {

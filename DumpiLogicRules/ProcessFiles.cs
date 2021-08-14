@@ -1,25 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualBasic;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using Inventor;
 using System.Windows.Forms;
 using DRYHelpers;
 using System.IO;
 using Autodesk.iLogic.Interfaces;
 
-namespace DumpiLogicRulesExtension
+namespace DumpiLogicRules
 {
-    
 
-public class ProcessFiles
+
+    public class ProcessFiles
 {
 	/// <summary>
 	/// Prompts the user to select a folder then processes the part files contained within
@@ -28,7 +19,7 @@ public class ProcessFiles
 	public static void ProcessPartsinFolder(NameValueMap Context)
 	{
 		MessageBox.Show("Remember to log out of Vault or you're gonna have a bad day!\r\nRemember to unload the Feature recognizer addin Too!");
-        IiLogicAutomation iLogicAuto = GetiLogicAutomation(DumpiLogicRulesExtension.m_InventorApp);
+        IiLogicAutomation iLogicAuto = GetiLogicAutomation(DumpiLogicRules.m_InventorApp);
 		System.Windows.Forms.FolderBrowserDialog folderbrowser = new System.Windows.Forms.FolderBrowserDialog();
 
 		folderbrowser.RootFolder = System.Environment.SpecialFolder.UserProfile;
@@ -52,12 +43,12 @@ public class ProcessFiles
 						percent = (Convert.ToDouble(progressint) / partlisttoprocess.Count());
 						progressint += 1;
 
-                            PartDocument partdoc = (PartDocument)DumpiLogicRulesExtension.m_InventorApp.Documents.Open(partfile.FullName);
+                            PartDocument partdoc = (PartDocument)DumpiLogicRules.m_InventorApp.Documents.Open(partfile.FullName);
 
 						UpdateStatusBar(percent, "Processing: " + System.IO.Path.GetFileNameWithoutExtension(partdoc.File.FullFileName));
 						//insert the name of the external rule you wish to run here:
 						//iLogicAuto.RunExternalRule(partdocument, rulename)
-						NameValueMap Args = DumpiLogicRulesExtension.m_InventorApp.TransientObjects.CreateNameValueMap();
+						NameValueMap Args = DumpiLogicRules.m_InventorApp.TransientObjects.CreateNameValueMap();
 						Args.Value["Filename"] = partdoc.FullFileName;
 						iLogicAuto.RunExternalRuleWithArguments((Document)partdoc, rulename, Args);
 						partdoc.Close();
@@ -106,7 +97,7 @@ public class ProcessFiles
 			//RulesList.Add(System.IO.Path.GetFileNameWithoutExtension(file.FullName))
 		}
 
-		ruleslistform.ShowDialog(new WindowWrapper(new IntPtr(DumpiLogicRulesExtension.m_InventorApp.MainFrameHWND)));
+		ruleslistform.ShowDialog(new WindowWrapper(new IntPtr(DumpiLogicRules.m_InventorApp.MainFrameHWND)));
 
 		//Dim selectedfile As String = InputListBox("Prompt", RulesList, "", Title:="Select Rule from this list", ListName:="Available External Rules")
 
@@ -127,7 +118,7 @@ public class ProcessFiles
 	/// <remarks></remarks>
 	public static void UpdateStatusBar(string Message)
 	{
-		DumpiLogicRulesExtension.m_InventorApp.StatusBarText = Message;
+		DumpiLogicRules.m_InventorApp.StatusBarText = Message;
 	}
 
 	/// <summary>
@@ -138,7 +129,7 @@ public class ProcessFiles
 	/// <remarks></remarks>
 	public static void UpdateStatusBar(double percent, string Message)
 	{
-		DumpiLogicRulesExtension.m_InventorApp.StatusBarText = Message + " (" + percent.ToString("P1") + ")";
+		DumpiLogicRules.m_InventorApp.StatusBarText = Message + " (" + percent.ToString("P1") + ")";
 	}
 	#endregion
 }

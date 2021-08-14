@@ -765,32 +765,40 @@ namespace MyExtensions {
                 return serializer;
             }
         }
-        
+
         #region Serialize/Deserialize
         /// <summary>
         /// Serializes current longOptions object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize() {
-            System.IO.StreamReader streamReader = null;
-            System.IO.MemoryStream memoryStream = null;
-            try {
-                memoryStream = new System.IO.MemoryStream();
-                Serializer.Serialize(memoryStream, this);
-                memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
-                streamReader = new System.IO.StreamReader(memoryStream);
-                return streamReader.ReadToEnd();
-            }
-            finally {
-                if ((streamReader != null)) {
-                    streamReader.Dispose();
+        public new virtual string Serialize
+        {
+            get
+            {
+                System.IO.StreamReader streamReader = null;
+                System.IO.MemoryStream memoryStream = null;
+                try
+                {
+                    memoryStream = new System.IO.MemoryStream();
+                    Serializer.Serialize(memoryStream, this);
+                    memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+                    streamReader = new System.IO.StreamReader(memoryStream);
+                    return streamReader.ReadToEnd();
                 }
-                if ((memoryStream != null)) {
-                    memoryStream.Dispose();
+                finally
+                {
+                    if ((streamReader != null))
+                    {
+                        streamReader.Dispose();
+                    }
+                    if ((memoryStream != null))
+                    {
+                        memoryStream.Dispose();
+                    }
                 }
             }
         }
-        
+
         /// <summary>
         /// Deserializes workflow markup into an longOptions object
         /// </summary>
@@ -850,7 +858,7 @@ namespace MyExtensions {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlString = Serialize;
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
                 streamWriter.WriteLine(xmlString);

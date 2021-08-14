@@ -46,9 +46,9 @@ namespace DumpiLogicRules
         public ModifyRulesWindow()
         {
             InitializeComponent();
-            listofRulesToModify = DumpiLogicRulesExtension.listofiLogicRules;
+            listofRulesToModify = DumpiLogicRules.listofiLogicRules;
             CollectionViewSource itemCollectionViewSource = FindResource("ItemCollectionViewSource") as CollectionViewSource;
-            itemCollectionViewSource.Source = DumpiLogicRulesExtension.listofiLogicRules;
+            itemCollectionViewSource.Source = DumpiLogicRules.listofiLogicRules;
             //dataGrid.ItemsSource = listofRulesToModify
             // Add any initialization after the InitializeComponent() call.
         }

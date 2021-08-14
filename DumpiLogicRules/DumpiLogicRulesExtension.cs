@@ -6,17 +6,18 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DumpiLogicRules
 {
     [Export(typeof(IVButtonPlugin))]
-    public partial class DumpiLogicRulesExtension : IVButtonPlugin
+    public partial class DumpiLogicRules : IVButtonPlugin
     {
         private Assembly thisAssembly = System.Reflection.Assembly.GetExecutingAssembly();
         private static MyLog4NetFileHelper logHelper = null;
-        public static readonly ILog log = LogManager.GetLogger(typeof(DumpiLogicRulesExtension));
+        public static readonly ILog log = LogManager.GetLogger(typeof(DumpiLogicRules));
         public static Application m_InventorApp = null;
         internal static DirtyCollection<RuleType> listofiLogicRules;
 
@@ -59,7 +60,7 @@ namespace DumpiLogicRules
         {
             get
             {
-                return "DumpiLogicRulesExtension.Resources.ExportRules.ico";
+                return "DumpiLogicRules.Resources.ExportRules.ico";
             }
         }
 
@@ -237,7 +238,7 @@ namespace DumpiLogicRules
             }
 
         }
-        private string m_proTTImagePath = "DumpiLogicRulesExtension.Resources.ExportRules.bmp"; //"Resources.RadialHolesTooltip";
+        private string m_proTTImagePath = "DumpiLogicRules.Resources.ExportRules.bmp"; //"Resources.RadialHolesTooltip";
 
 
         public string ProgressiveToolTipImagePath
