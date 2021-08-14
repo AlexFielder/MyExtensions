@@ -25,7 +25,7 @@ namespace MyExtensions.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("GraitecExtensionsServer.Settings_")]
+        [global::System.Configuration.DefaultSettingValueAttribute("MyExtensionsServer.Settings_")]
         public string SettingsButtonInternalName {
             get {
                 return ((string)(this["SettingsButtonInternalName"]));

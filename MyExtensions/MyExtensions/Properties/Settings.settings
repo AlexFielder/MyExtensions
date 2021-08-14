@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="SettingsButtonInternalName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">GraitecExtensionsServer.Settings_</Value>
+      <Value Profile="(Default)">MyExtensionsServer.Settings_</Value>
     </Setting>
     <Setting Name="AppSettingsChangesSavedMsg" Type="System.String" Scope="User">
       <Value Profile="(Default)">Application Configuration changes have been saved.</Value>
