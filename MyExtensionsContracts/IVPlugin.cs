@@ -23,4 +23,5 @@ namespace MyExtensionsContracts
         string PluginSettingsPrefix { get; }
         string PluginSettingsPrefixVar { get; set; }
         string ParentSettingsFilePath { get; }
+    }
 }

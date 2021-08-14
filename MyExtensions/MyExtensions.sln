@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExtensions", "MyExtension
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExtensionsContracts", "..\MyExtensionsContracts\MyExtensionsContracts.csproj", "{82E8B047-FC6B-4CF6-AF81-081B47108006}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLog4NetFileHelper", "..\MyLog4NetFileHelper\MyLog4NetFileHelper.csproj", "{71835829-1351-47EF-B09C-36475BD1BF44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{82E8B047-FC6B-4CF6-AF81-081B47108006}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82E8B047-FC6B-4CF6-AF81-081B47108006}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82E8B047-FC6B-4CF6-AF81-081B47108006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71835829-1351-47EF-B09C-36475BD1BF44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71835829-1351-47EF-B09C-36475BD1BF44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71835829-1351-47EF-B09C-36475BD1BF44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71835829-1351-47EF-B09C-36475BD1BF44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

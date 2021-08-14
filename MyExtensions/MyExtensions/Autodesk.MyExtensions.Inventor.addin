@@ -4,7 +4,7 @@
   <ClientId>{fd207621-7782-482d-b938-8c3c2442bb98}</ClientId>
   <DisplayName>MyExtensions</DisplayName>
   <Description>MyExtensions</Description>
-  <Assembly>MyExtensions.dll</Assembly>
+  <Assembly>%AppData%\Autodesk\ApplicationPlugins\AllEyes Add-ins\MyExtensions.dll</Assembly>
   <LoadOnStartUp>1</LoadOnStartUp>
   <UserUnloadable>1</UserUnloadable>
   <Hidden>0</Hidden>
