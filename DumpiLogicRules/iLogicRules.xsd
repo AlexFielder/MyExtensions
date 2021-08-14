@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" id="InventorAssembly"
+           targetNamespace="http://tempuri.org/iLogicRules.xsd"
+           xmlns="http://tempuri.org/iLogicRules.xsd"
+           xmlns:mstns="http://tempuri.org/iLogicRules.xsd"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="root" type="iLogicRuleType" />
+    <xs:complexType name="iLogicRuleType">
+      <xs:sequence>
+        <xs:element name="Rule" type="RuleType" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  <!--<xs:element name="Rule" type="RuleType" />-->
+  <xs:complexType name="RuleType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="Text" />
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="ParentFileName"/>
+    <xs:attribute type="xs:string" name="Name"/>
+    <xs:attribute type="xs:boolean" name="IsActive" default="false"/>
+    <xs:attribute type="xs:boolean" name="FireDependentImmediately" default="false"/>
+    <xs:attribute type="xs:boolean" name="AutomaticOnParameterChange" default="false"/>
+    <xs:attribute type="xs:boolean" name="Silentoperation" default="false"/>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DumpiLogicRules.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ButtonExtensionInternalName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MyExtensionsServer.Button_</Value>
+    </Setting>
+    <Setting Name="XSDCodeInputStringiLogicRules" Type="System.String" Scope="User">
+      <Value Profile="(Default)">"C:\program files (x86)\xsd2code\xsd2code.exe" C:\Users\alex_\OneDrive\Documents\GitHub\MyExtensions\DumpiLogicRules\iLogicRules.xsd DumpiLogicRulesExtension iLogicRules.cs /l CS /is+ /gbc- /ggbc+ /xa+</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
