@@ -147,6 +147,13 @@
       <DependentUpon>RulesList.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\DummyText.ico" />
+    <EmbeddedResource Include="Resources\ExportRules.bmp" />
+    <EmbeddedResource Include="Resources\ExportRules.ico" />
+    <EmbeddedResource Include="Resources\ExportRules.jpg" />
+    <EmbeddedResource Include="Resources\TurdPolish.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>XCopy "$(TargetDir)*.*" "%25AppData%25\Autodesk\ApplicationPlugins\AllEyes Add-ins\Plugins\*.*" /Y /R</PostBuildEvent>
