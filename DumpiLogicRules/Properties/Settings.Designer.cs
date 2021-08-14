@@ -38,8 +38,8 @@ namespace DumpiLogicRules.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("\"C:\\program files (x86)\\xsd2code\\xsd2code.exe\" C:\\Users\\alex_\\OneDrive\\Documents\\" +
-            "GitHub\\MyExtensions\\DumpiLogicRules\\iLogicRules.xsd DumpiLogicRulesExtension iLo" +
-            "gicRules.cs /l CS /is+ /gbc- /ggbc+ /xa+")]
+            "GitHub\\MyExtensions\\DumpiLogicRules\\iLogicRules.xsd DumpiLogicRules iLogicRules." +
+            "cs /l CS /is+ /gbc- /ggbc+ /xa+")]
         public string XSDCodeInputStringiLogicRules {
             get {
                 return ((string)(this["XSDCodeInputStringiLogicRules"]));
